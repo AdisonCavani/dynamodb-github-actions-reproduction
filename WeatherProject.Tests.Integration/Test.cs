@@ -10,7 +10,7 @@ using Xunit;
 namespace WeatherProject.Tests.Integration;
 
 [Collection(SharedTestCollection.Name)]
-public class Test : IAsyncLifetime
+public class Test
 {
     private readonly ApiFactory _factory;
     private readonly HttpClient _httpClient;
@@ -62,8 +62,4 @@ public class Test : IAsyncLifetime
         var okResult = await response.Content.ReadFromJsonAsync<WeatherForecast>();
         Assert.Equivalent(item, okResult);
     }
-
-    public Task InitializeAsync() => Task.CompletedTask;
-
-    public async Task DisposeAsync() => await Database.ResetAsync(_factory, "MyTable");
 }
