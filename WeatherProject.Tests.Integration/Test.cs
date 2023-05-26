@@ -9,8 +9,7 @@ using Xunit;
 
 namespace WeatherProject.Tests.Integration;
 
-[Collection(SharedTestCollection.Name)]
-public class Test
+public class Test : IClassFixture<ApiFactory>
 {
     private readonly ApiFactory _factory;
     private readonly HttpClient _httpClient;
